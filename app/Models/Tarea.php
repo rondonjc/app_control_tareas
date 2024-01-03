@@ -8,5 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class Tarea extends Model
 {
     use HasFactory;
-    protected $fillable = ['tarea','fecha_limite'];
+    protected $fillable = ['tarea','fecha_limite','user_id'];
+
+    public function user(){
+
+        return $this->belongsTo('App\Models\User');
+    }
+
 }

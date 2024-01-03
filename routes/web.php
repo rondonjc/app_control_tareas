@@ -17,11 +17,13 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('bienvenido');
 });
 
 Auth::routes(['verify'=>true]);
 
+Route::get('tarea/export/{extension}',[TareasController::class, 'exportacion'])->name('tarea.exportar');
+Route::get('tarea/exportarpdf',[TareasController::class, 'exportacionPdf'])->name('tarea.exportarPdf');
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home')->middleware('verified');
 Route::resource('/tarea',TareasController::class)->middleware('verified')->middleware('auth');
 
